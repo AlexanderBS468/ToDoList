@@ -1,28 +1,36 @@
-version: '3.8'
-
+---
 services:
   web:
     build: .
     ports:
       - "8080:80"
-    volumes:
-      - .:/var/www-data
+    depends_on:
+      - source
+    volumes_from:
+      - source
     networks:
       - webnet
 
   db:
     image: mysql:5.7
+    volumes_from:
+      - source
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: test_db
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
-    volumes:
-      - db_data:/var/run/mysqld
     networks:
       - webnet
 
+  source:
+    image: alpine:latest
+    container_name: source
+    volumes:
+      - ${SITE_PATH}:/var/www/html
+    networks:
+      - webnet
 networks:
   webnet:
