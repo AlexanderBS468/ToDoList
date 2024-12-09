@@ -1,0 +1,16 @@
+{
+	"autoload": {
+		"psr-4": {
+			"ProjectA\\Core\\": "Core/"
+		}
+	},
+	"config": {
+		"platform": {
+			"php": "8.1.27"
+		}
+	},
+    "require": {
+        "illuminate/database": "^8.0",
+				"twbs/bootstrap": "^5.3"
+    }
+}

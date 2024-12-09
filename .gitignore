@@ -1,0 +1,22 @@
+*.log
+*.log.old
+*.sql
+.env.php
+
+# composer
+/Core/vendor
+/Core/.composer
+/Core/composer.phar
+
+.DS_Store
+.idea
+.buildpath
+.project
+.settings
+Thumbs.db
+.~lock.*
+.vscode
+.bash_history
+
+# docker
+/docker/.env

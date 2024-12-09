@@ -1,0 +1,1 @@
+<?php require_once "Views/template/{$GLOBALS['TEMPLATE_NAME']}/header.php";
