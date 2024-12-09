@@ -3,22 +3,29 @@
 namespace ProjectA\Core\Controllers;
 
 use ProjectA\Core\Model;
+use Illuminate\Pagination\Paginator;
 use ProjectA\Core\Tools\Validator\Email;
 
 class Task
 {
 	public function index() : void
 	{
+		Paginator::currentPageResolver(function () {
+			return isset($_GET['page']) ? (int) $_GET['page'] : 1;
+		});
+
 		$countOnPage = 3;
-		$sortBy = $_GET['sort'] ?? 'id';
-		$direction = $_GET['direction'] ?? 'ASC';
+		$sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'id';
+		$direction = isset($_GET['direction']) ? $_GET['direction'] : 'asc';
 		$page = $_GET['page'] ?? 1;
 
-		$tasks = Model\Task::orderBy($sortBy, $direction)
-		                   ->skip(($page - 1) * $countOnPage)
-		                   ->take(3)
-		                   ->get();
+		$totalTasks = Model\Task::count();
+		$totalPages = ceil($totalTasks / $countOnPage);
 
+		$tasks = Model\Task::orderBy($sortBy, $direction)
+		                   ->paginate($countOnPage);
+
+		$tasks->appends(['sort' => $sortBy, 'direction' => $direction]);
 		include __DIR__ . '/../Views/tasks.php';
 	}
 

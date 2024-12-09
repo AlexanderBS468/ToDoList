@@ -73,6 +73,7 @@ $isAdmin = Admin::isAdmin();
 			</tbody>
 		</table>
 		<?php
+		include 'pagination.php';
 	}
 	?>
 	<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add Task</button>
