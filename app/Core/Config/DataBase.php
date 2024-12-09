@@ -18,7 +18,7 @@ $capsule->addConnection([
 	'password' => $databasePass,
 	'charset' => 'utf8mb4',
 	'collation' => 'utf8mb4_unicode_ci',
-	'unix_socket' => '/var/lib/mysql/mysql.sock',
+//	'unix_socket' => '/var/lib/mysql/mysql.sock',
 	'port' => 3306,
 ]);
 

@@ -23,9 +23,12 @@ class Router
 
 	public function dispatch($url) : void
 	{
+		$url = $_SERVER['REQUEST_URI'];
+		$parsedUrl = parse_url($url);
+		$path = $parsedUrl['path'];
+
 		foreach ($this->routes as $route => $action) {
-			if (preg_match("~^$route~", $url, $matches)) {
-				array_shift($matches);
+			if (preg_match("~^$route$~", $path)) {
 				$this->$action();
 				return;
 			}

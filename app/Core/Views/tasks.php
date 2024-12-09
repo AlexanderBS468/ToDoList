@@ -20,9 +20,6 @@ $isAdmin = Admin::isAdmin();
 	}
 	else
 	{
-		$optionsSort = [
-
-		];
 		?>
 		<div class="sort-dropdown mb-5">
 			<span>Sort by</span>

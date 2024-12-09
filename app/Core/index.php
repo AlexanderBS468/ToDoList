@@ -6,7 +6,7 @@ require_once 'vendor/autoload.php';
 require_once 'Config/DataBase.php';
 
 $GLOBALS['TEMPLATE_NAME'] = 'main';
-$GLOBALS['DIR_PROJECT'] = '/test_todolist/';
+$GLOBALS['DIR_PROJECT'] = '/';
 
 const PROLOG_INCLUDED = true;
 
