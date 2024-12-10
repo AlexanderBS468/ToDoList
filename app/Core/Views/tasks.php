@@ -56,10 +56,10 @@ $isAdmin = Admin::isAdmin();
 
 				?>
 				<tr>
-					<td><?=$task['username']?></td>
-					<td><?=$task['email']?></td>
-					<td><?=$task['task_text']?></td>
-					<td><span class="badge <?=$status['class']?>"><?=$status['text']?></span></td>
+					<td><?=htmlspecialchars($task['username'], ENT_QUOTES, 'UTF-8')?></td>
+					<td><?=htmlspecialchars($task['email'], ENT_QUOTES, 'UTF-8')?></td>
+					<td><?=htmlspecialchars($task['task_text'], ENT_QUOTES, 'UTF-8')?></td>
+					<td><span class="badge <?=$status['class']?>"><?=htmlspecialchars($status['text'], ENT_QUOTES, 'UTF-8')?></span></td>
 					<?php
 					if($isAdmin)
 					{

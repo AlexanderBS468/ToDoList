@@ -36,17 +36,17 @@ if (!Admin::isAdmin()) {
 					<tr>
 						<td>
 							<label for="username">
-								<input type="text" id="username" name="username" value="<?=$task['username']?>" required>
+								<input type="text" id="username" name="username" value="<?=htmlspecialchars($task['username'], ENT_QUOTES, 'UTF-8')?>" required>
 							</label>
 						</td>
 						<td>
 							<label for="email">
-								<input type="email" id="email" name="email" value="<?=$task['email']?>" required>
+								<input type="email" id="email" name="email" value="<?=htmlspecialchars($task['email'], ENT_QUOTES, 'UTF-8')?>" required>
 							</label>
 						</td>
 						<td>
 							<label for="task_text">
-								<textarea id="task_text" name="task_text" cols="30" rows="10" required><?=$task['task_text']?></textarea>
+								<textarea id="task_text" name="task_text" cols="30" rows="10" required><?=htmlspecialchars($task['task_text'], ENT_QUOTES, 'UTF-8')?></textarea>
 							</label>
 						</td>
 						<td>
@@ -56,7 +56,7 @@ if (!Admin::isAdmin()) {
 
 									foreach ($valuesStatus as $value)
 									{
-										?><option <?=((int)$task['status'] === (int)$value['value'] ? 'selected' : '')?> value="<?=$value['value']?>"><?=$value['title']?></option><?php
+										?><option <?=((int)$task['status'] === (int)$value['value'] ? 'selected' : '')?> value="<?=$value['value']?>"><?=htmlspecialchars($value['title'], ENT_QUOTES, 'UTF-8')?></option><?php
 									}
 									?>
 								</select>
